@@ -22,4 +22,9 @@ public class Manager : MonoBehaviour
     {
         isMoving = true;
     }
+
+    public void StopMoving()
+    {
+        isMoving = false;
+    }
 }

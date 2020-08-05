@@ -10,15 +10,15 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        speed = 30f;
+        speed = 3f;
         manager = Manager.Instance;
     }
 
-    public void Move()
+    public void Update()
     {
         if(manager.isMoving == true)
         {
-            gameObject.transform.position += transform.forward * speed * Time.deltaTime;
+            transform.position = transform.position + Camera.main.transform.forward * speed * Time.deltaTime;
         }
     } 
 }
