@@ -35,56 +35,18 @@ public class Manager : MonoBehaviour
 
     public void LoadVillage()
     {
-        StartCoroutine("NextScene");
-    }
-
-    public void CancelCall()
-    {
-        StopCoroutine("NextScene");
-    }
-
-    public void OptionsPanel()
-    {
-        StartCoroutine("OpenOptions");
-    }
-
-    public void CacelOptions()
-    {
-        StopCoroutine("OpenOptions");
-    }
-
-    public void CloseOptions()
-    {
-        StartCoroutine("CloseOptionsCoroutine");
-    }
-
-    public void CancelCloseOptions()
-    {
-        StopCoroutine("CloseOptionsCoroutine");
-    }
-
-    IEnumerator NextScene()
-    {
-        yield return new WaitForSeconds(2f);
-
         SceneManager.LoadScene("Village");
-
-        yield return new WaitForSeconds(3f);
     }
 
-    IEnumerator OpenOptions()
+    public void OpenOptions()
     {
-        yield return new WaitForSeconds(2f);
-
         options.SetActive(true);
         startGameButton.SetActive(false);
         optionsButton.SetActive(false);
     }
 
-    IEnumerator CloseOptionsCoroutine()
+    public void CloseOptions()
     {
-        yield return new WaitForSeconds(2f);
-
         options.SetActive(false);
         startGameButton.SetActive(true);
         optionsButton.SetActive(true);
