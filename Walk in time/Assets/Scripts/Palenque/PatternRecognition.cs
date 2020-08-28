@@ -9,7 +9,7 @@ public class PatternRecognition : MonoBehaviour
     public Color baseColor;
     public Color playerColor;
 
-    private GameObject[,] points;
+    private GameObject[,] points; // Buscar cómo escoger los miembros de la matriz en determinada posición
 
     private int width = 4;
     private int height = 4;
@@ -62,49 +62,77 @@ public class PatternRecognition : MonoBehaviour
                     p.GetComponent<Renderer>().material.color = colorAUsar;
 
                     CheckPattern(i, j, colorAUsar);
+                    CheckHorizontal(i, j, colorAUsar);
+                    
                 }
             }
         }
     }
 
-    void CheckPattern(int x, int y, Color colorAVerificar)
+    public void CheckPattern(int x, int y, Color colorAVerificar)
     {
         int i = x - 1;
 		int i2 = x + 1;
 		int contador = 0;
 
-		for(int j = y + 2; j >= y; j--)
-		{
-			if (j < 0 || j >= height || i < 0 || i >= width)
-		    return; // Este Return cancela en caso de que se salga de la dimensión del tablero.
+        for(int j = y + 2; j >= y; j--)
+        {
+            if (j < 0 || j >= height || i < 0 || i >= width)
+            return; // Este Return cancela en caso de que se salga de la dimensión del tablero.
 
-		    GameObject p = points[i, j];
+            GameObject p = points[i, j];
 
-			if (p.GetComponent<Renderer>().material.color != colorAVerificar)
-			{
-				return; // Revisa que sea el mismo color a verificar.
-			}
+            if (p.GetComponent<Renderer>().material.color != colorAVerificar)
+            {
+                return; // Revisa que sea el mismo color a verificar.
+            }
 
-			if(i >= 0 && i < width && j >= 0 && j < height)
-			{
-			    contador++;
-			}
+            if(i >= 0 && i < width && j >= 0 && j < height)
+            {
+                contador++;
+            }
 
-			if(i2 >= 0 && i2 < width && j >= 0 && j < height)
-			{
-			    contador++;
-			}
+            if(i2 >= 0 && i2 < width && j >= 0 && j < height)
+            {
+                contador++;
+            }
 
-			else
-			{
-				contador = 0;
-			}
+            else
+            {
+                contador = 0;
+            }
 
-			if(contador == 4)
-			{
-				Debug.Log("Get in Loser");
-				//inGame = false;
-			}
-		}
+            if(contador == 4)
+            {
+                Debug.Log("Get in Loser");
+                //inGame = false;
+            }
+
+        }
+    }
+
+    void CheckHorizontal(int x, int y, Color colorAVerificar)
+    {
+		int contador = 0;
+
+        for (int i = x - 3; i <= x + 3; i++) 
+        {
+            if (i < 0 || i >= width) // Este For, es el encargado de que no exceda el ancho del tablero.
+                continue; // El Continue permite saltar u omitir las sentencias restantes y continuar con la siguiente.
+
+            GameObject p = points[i, y];
+
+            if (p.GetComponent<Renderer>().material.color == colorAVerificar)
+            {
+                contador++;
+                if (contador == 3)
+                {
+                    Debug.Log("Ganador");
+                    //inGame = false;
+                }
+            }
+            else
+                contador = 0;
+        }
     }
 }
