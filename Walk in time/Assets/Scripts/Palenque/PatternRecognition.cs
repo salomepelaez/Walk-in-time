@@ -62,7 +62,7 @@ public class PatternRecognition : MonoBehaviour
                     p.GetComponent<Renderer>().material.color = colorAUsar;
 
                     //CheckPattern(i, j, colorAUsar);
-                    CheckHorizontal(i, j, colorAUsar);
+                    CheckPattern(i, j, colorAUsar);
                     
                 }
             }
@@ -111,7 +111,7 @@ public class PatternRecognition : MonoBehaviour
         }
     }*/
 
-    void CheckHorizontal(int x, int y, Color colorAVerificar)
+    void CheckPattern(int x, int y, Color colorAVerificar)
     {
 		int contador = 0;
 
@@ -131,19 +131,48 @@ public class PatternRecognition : MonoBehaviour
                 if (pX == points[0, j] && pY == points[i, 3])
                 {
                     contador = contador + 1;
-                    Debug.Log("chi");
+                    Debug.Log("a");
                 }
 
                 if (pX == points[1, j] && pY == points[i, 3])
                 {
                     contador = contador + 1;
-                    Debug.Log("jeje");
+                    Debug.Log("b");
                 }
 
                 if (pX == points[2, j] && pY == points[i, 3])
                 {
                     contador = contador + 1;
-                    Debug.Log("bue");
+                    Debug.Log("c");
+                }
+
+                if (pX == points[2, j] && pY == points[i, 2])
+                {
+                    contador = contador + 1;
+                    Debug.Log("d");
+                }
+
+                if (pX == points[2, j] && pY == points[i, 1])
+                {
+                    contador = contador + 1;
+                    Debug.Log("e");
+                }
+
+                if (pX == points[2, j] && pY == points[i, 0])
+                {
+                    contador = contador + 1;
+                    Debug.Log("f");
+                }
+                
+                if (pX == points[3, j] && pY == points[i, 0])
+                {
+                    contador = contador + 1;
+                    Debug.Log("g");
+
+                    if(contador == 7)
+                    {
+                        Debug.Log("ganador");
+                    }
                 }
 
                 else
