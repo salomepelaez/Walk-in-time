@@ -120,11 +120,12 @@ public class PatternRecognition : MonoBehaviour
             if (i < 0 || i >= width) // Este For, es el encargado de que no exceda el ancho del tablero.
                 continue; // El Continue permite saltar u omitir las sentencias restantes y continuar con la siguiente.
 
-            GameObject p = points[i, y];
+            GameObject p = points[i, y]; //p.GetComponent<Renderer>().material.color == colorAVerificar
 
-            if (p.GetComponent<Renderer>().material.color == colorAVerificar)
+            if (p == points[0, 3])
             {
                 contador++;
+                Debug.Log("madre mia wili");
                 if (contador == 3)
                 {
                     Debug.Log("Ganador");
