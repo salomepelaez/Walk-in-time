@@ -61,7 +61,7 @@ public class PatternRecognition : MonoBehaviour
 
                     p.GetComponent<Renderer>().material.color = colorAUsar;
 
-                    CheckPattern(i, j, colorAUsar);
+                    //CheckPattern(i, j, colorAUsar);
                     CheckHorizontal(i, j, colorAUsar);
                     
                 }
@@ -69,7 +69,7 @@ public class PatternRecognition : MonoBehaviour
         }
     }
 
-    public void CheckPattern(int x, int y, Color colorAVerificar)
+    /*public void CheckPattern(int x, int y, Color colorAVerificar)
     {
         int i = x - 1;
 		int i2 = x + 1;
@@ -109,7 +109,7 @@ public class PatternRecognition : MonoBehaviour
             }
 
         }
-    }
+    }*/
 
     void CheckHorizontal(int x, int y, Color colorAVerificar)
     {
@@ -117,23 +117,38 @@ public class PatternRecognition : MonoBehaviour
 
         for (int i = x - 3; i <= x + 3; i++) 
         {
-            if (i < 0 || i >= width) // Este For, es el encargado de que no exceda el ancho del tablero.
-                continue; // El Continue permite saltar u omitir las sentencias restantes y continuar con la siguiente.
-
-            GameObject p = points[i, y]; //p.GetComponent<Renderer>().material.color == colorAVerificar
-
-            if (p == points[0, 3])
+            for (int j = y - 3; j <= y + 3; j++) 
             {
-                contador++;
-                Debug.Log("madre mia wili");
-                if (contador == 3)
+                if (i < 0 || i >= width) // Este For, es el encargado de que no exceda el ancho del tablero.
+                    continue; // El Continue permite saltar u omitir las sentencias restantes y continuar con la siguiente.
+
+                if (j < 0 || j >= height) // Este if, es el encargado de que no exceda el alto del tablero.
+                continue;
+                
+                GameObject pX = points[x, j];
+                GameObject pY = points[i, y]; 
+
+                if (pX == points[0, j] && pY == points[i, 3])
                 {
-                    Debug.Log("Ganador");
-                    //inGame = false;
+                    contador = contador + 1;
+                    Debug.Log("chi");
                 }
+
+                if (pX == points[1, j] && pY == points[i, 3])
+                {
+                    contador = contador + 1;
+                    Debug.Log("jeje");
+                }
+
+                if (pX == points[2, j] && pY == points[i, 3])
+                {
+                    contador = contador + 1;
+                    Debug.Log("bue");
+                }
+
+                else
+                    contador = 0;
             }
-            else
-                contador = 0;
         }
     }
 }
