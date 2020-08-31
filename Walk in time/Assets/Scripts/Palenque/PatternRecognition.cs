@@ -14,8 +14,12 @@ public class PatternRecognition : MonoBehaviour
     private int width = 4;
     private int height = 4;
 
+    public int contador;
+
     void Start()
     {
+        contador = 0;
+
         Fill();
     }
     
@@ -111,68 +115,79 @@ public class PatternRecognition : MonoBehaviour
         }
     }*/
 
-    void CheckPattern(int x, int y, Color colorAVerificar)
+    public void CheckPattern(int x, int y, Color colorAVerificar)
     {
-		int contador = 0;
-
-        for (int i = x - 3; i <= x + 3; i++) 
+        for (int i = 0; i <= points.Length; i++) 
         {
-            for (int j = y - 3; j <= y + 3; j++) 
+            for (int j = 0; j <= points.Length; j++) 
             {
                 if (i < 0 || i >= width) // Este For, es el encargado de que no exceda el ancho del tablero.
                     continue; // El Continue permite saltar u omitir las sentencias restantes y continuar con la siguiente.
 
                 if (j < 0 || j >= height) // Este if, es el encargado de que no exceda el alto del tablero.
-                continue;
+                    continue;
                 
+                GameObject p = points[i, j];
                 GameObject pX = points[x, j];
                 GameObject pY = points[i, y]; 
 
-                if (pX == points[0, j] && pY == points[i, 3])
+                if (p.GetComponent<Renderer>().material.color == colorAVerificar && pX == points[0, j] && pY == points[i, 3])
                 {
                     contador = contador + 1;
                     Debug.Log("a");
+                    Debug.Log(contador);
+
                 }
 
-                if (pX == points[1, j] && pY == points[i, 3])
+                if (p.GetComponent<Renderer>().material.color == colorAVerificar && pX == points[1, j] && pY == points[i, 3])
                 {
                     contador = contador + 1;
                     Debug.Log("b");
+                    Debug.Log(contador);
+
                 }
 
-                if (pX == points[2, j] && pY == points[i, 3])
+                if (p.GetComponent<Renderer>().material.color == colorAVerificar && pX == points[2, j] && pY == points[i, 3])
                 {
                     contador = contador + 1;
                     Debug.Log("c");
+                    Debug.Log(contador);
+
                 }
 
-                if (pX == points[2, j] && pY == points[i, 2])
+                if (p.GetComponent<Renderer>().material.color == colorAVerificar && pX == points[2, j] && pY == points[i, 2])
                 {
                     contador = contador + 1;
                     Debug.Log("d");
+                    Debug.Log(contador);
+
                 }
 
-                if (pX == points[2, j] && pY == points[i, 1])
+                if (p.GetComponent<Renderer>().material.color == colorAVerificar && pX == points[2, j] && pY == points[i, 1])
                 {
                     contador = contador + 1;
                     Debug.Log("e");
+                    Debug.Log(contador);
                 }
 
-                if (pX == points[2, j] && pY == points[i, 0])
+                if (p.GetComponent<Renderer>().material.color == colorAVerificar && pX == points[2, j] && pY == points[i, 0])
                 {
                     contador = contador + 1;
                     Debug.Log("f");
+                    Debug.Log(contador);
+
                 }
                 
-                if (pX == points[3, j] && pY == points[i, 0])
+                if (p.GetComponent<Renderer>().material.color == colorAVerificar && pX == points[3, j] && pY == points[i, 0])
                 {
                     contador = contador + 1;
                     Debug.Log("g");
+                    Debug.Log(contador);                    
+                }
 
-                    if(contador == 7)
-                    {
-                        Debug.Log("ganador");
-                    }
+                if(contador == 7)
+                {
+                    Debug.Log("ganador");
                 }
 
                 else
