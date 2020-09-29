@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PatternRecognition : MonoBehaviour
 {
+    GameManager manager;
+
     public GameObject point;
 
     public Color baseColor;
@@ -13,14 +15,14 @@ public class PatternRecognition : MonoBehaviour
 
     private int width = 4;
     private int height = 4;
-
-    public int contador;
-    public bool rightChoice;
-
-    void Start()
+    
+    public void Start()
     {
-        contador = 0;
-        rightChoice = false;
+        manager = GameManager.Instance;
+        manager.contador = 0;
+        manager.wrongChoices = 3;
+        manager.rightChoice = false;
+        manager.wrongChoice = false;
 
         Fill();
     }
@@ -29,6 +31,8 @@ public class PatternRecognition : MonoBehaviour
     {
         Vector3 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         PickUpPiece(mPosition);
+
+        manager.attemptsText.text = "Intentos: " + manager.wrongChoices;
     }
 
     void Fill()
@@ -91,70 +95,78 @@ public class PatternRecognition : MonoBehaviour
                 GameObject pX = points[x, j];
                 GameObject pY = points[i, y]; 
 
-                if (pX == points[0, j] && pY == points[i, 3] && rightChoice == false)
+                if (pX == points[0, j] && pY == points[i, 3] && manager.rightChoice == false)
                 {
-                    rightChoice = true;
+                    manager.rightChoice = true;
                     StartCoroutine("CounterIncrease");
                     Debug.Log("a");
-                    Debug.Log(contador);
+                    Debug.Log(manager.contador);
 
                 }
 
-                if (pX == points[1, j] && pY == points[i, 3] && rightChoice == false)
+                if (pX == points[1, j] && pY == points[i, 3] && manager.rightChoice == false)
                 {
-                    rightChoice = true;
+                    manager.rightChoice = true;
                     StartCoroutine("CounterIncrease");
                     Debug.Log("b");
-                    Debug.Log(contador);
+                    Debug.Log(manager.contador);
 
                 }
 
-                if (pX == points[2, j] && pY == points[i, 3] && rightChoice == false)
+                if (pX == points[2, j] && pY == points[i, 3] && manager.rightChoice == false)
                 {
-                    rightChoice = true;
+                    manager.rightChoice = true;
                     StartCoroutine("CounterIncrease");
                     Debug.Log("c");
-                    Debug.Log(contador);
+                    Debug.Log(manager.contador);
 
                 }
 
-                if (pX == points[2, j] && pY == points[i, 2] && rightChoice == false)
+                if (pX == points[2, j] && pY == points[i, 2] && manager.rightChoice == false)
                 {
-                    rightChoice = true;
+                    manager.rightChoice = true;
                     StartCoroutine("CounterIncrease");
                     Debug.Log("d");
-                    Debug.Log(contador);
+                    Debug.Log(manager.contador);
 
                 }
 
-                if (pX == points[2, j] && pY == points[i, 1] && rightChoice == false)
+                if (pX == points[2, j] && pY == points[i, 1] && manager.rightChoice == false)
                 {
-                    rightChoice = true;
+                    manager.rightChoice = true;
                     StartCoroutine("CounterIncrease");
                     Debug.Log("e");
-                    Debug.Log(contador);
+                    Debug.Log(manager.contador);
                 }
 
-                if (pX == points[2, j] && pY == points[i, 0] && rightChoice == false)
+                if (pX == points[2, j] && pY == points[i, 0] && manager.rightChoice == false)
                 {
-                    rightChoice = true;
+                    manager.rightChoice = true;
                     StartCoroutine("CounterIncrease");
                     Debug.Log("f");
-                    Debug.Log(contador);
+                    Debug.Log(manager.contador);
 
                 }
                 
-                if (pX == points[3, j] && pY == points[i, 0] && rightChoice == false)
+                if (pX == points[3, j] && pY == points[i, 0] && manager.rightChoice == false)
                 {
-                    rightChoice = true;
+                    manager.rightChoice = true;
                     StartCoroutine("CounterIncrease");
                     Debug.Log("g");
-                    Debug.Log(contador);                    
+                    Debug.Log(manager.contador);                    
                 }
 
-                if(contador == 7)
+                if(manager.contador == 7)
                 {
                     Debug.Log("ganador");
+                }
+
+                else
+                {
+                    Debug.Log("no es ahí");
+                    Debug.Log(manager.wrongChoices);
+                    manager.wrongChoice = true;
+                    StartCoroutine("CounterDecrease");
                 }
 
             }
@@ -163,11 +175,21 @@ public class PatternRecognition : MonoBehaviour
 
     IEnumerator CounterIncrease()
     {
-        if(rightChoice == true)
-            contador = contador + 1;
+        if(manager.rightChoice == true)
+            manager.contador = manager.contador + 1;
 
         yield return new WaitForSeconds(0.01f);
 
-        rightChoice = false;
+        manager.rightChoice = false;
+    }
+
+    IEnumerator CounterDecrease()
+    {
+        if(manager.wrongChoice == true)
+            manager.wrongChoices = manager.wrongChoices - 1;
+
+        yield return new WaitForSeconds(0.01f);
+
+        manager.wrongChoice = false;
     }
 }
