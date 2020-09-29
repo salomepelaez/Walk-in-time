@@ -15,15 +15,17 @@ public class PatternRecognition : MonoBehaviour
     private int height = 4;
 
     public int contador;
+    public bool rightChoice;
 
     void Start()
     {
         contador = 0;
+        rightChoice = false;
 
         Fill();
     }
     
-    void FixedUpdate()
+    void Update()
     {
         Vector3 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         PickUpPiece(mPosition);
@@ -73,48 +75,6 @@ public class PatternRecognition : MonoBehaviour
         }
     }
 
-    /*public void CheckPattern(int x, int y, Color colorAVerificar)
-    {
-        int i = x - 1;
-		int i2 = x + 1;
-		int contador = 0;
-
-        for(int j = y + 2; j >= y; j--)
-        {
-            if (j < 0 || j >= height || i < 0 || i >= width)
-            return; // Este Return cancela en caso de que se salga de la dimensión del tablero.
-
-            GameObject p = points[i, j];
-
-            if (p.GetComponent<Renderer>().material.color != colorAVerificar)
-            {
-                return; // Revisa que sea el mismo color a verificar.
-            }
-
-            if(i >= 0 && i < width && j >= 0 && j < height)
-            {
-                contador++;
-            }
-
-            if(i2 >= 0 && i2 < width && j >= 0 && j < height)
-            {
-                contador++;
-            }
-
-            else
-            {
-                contador = 0;
-            }
-
-            if(contador == 4)
-            {
-                Debug.Log("Get in Loser");
-                //inGame = false;
-            }
-
-        }
-    }*/
-
     public void CheckPattern(int x, int y, Color colorAVerificar)
     {
         for (int i = 0; i <= points.Length; i++) 
@@ -131,56 +91,63 @@ public class PatternRecognition : MonoBehaviour
                 GameObject pX = points[x, j];
                 GameObject pY = points[i, y]; 
 
-                if (pX == points[0, j] && pY == points[i, 3])
+                if (pX == points[0, j] && pY == points[i, 3] && rightChoice == false)
                 {
-                    contador = contador + 1;
+                    rightChoice = true;
+                    StartCoroutine("CounterIncrease");
                     Debug.Log("a");
                     Debug.Log(contador);
 
                 }
 
-                if (pX == points[1, j] && pY == points[i, 3])
+                if (pX == points[1, j] && pY == points[i, 3] && rightChoice == false)
                 {
-                    contador = contador + 1;
+                    rightChoice = true;
+                    StartCoroutine("CounterIncrease");
                     Debug.Log("b");
                     Debug.Log(contador);
 
                 }
 
-                if (pX == points[2, j] && pY == points[i, 3])
+                if (pX == points[2, j] && pY == points[i, 3] && rightChoice == false)
                 {
-                    contador = contador + 1;
+                    rightChoice = true;
+                    StartCoroutine("CounterIncrease");
                     Debug.Log("c");
                     Debug.Log(contador);
 
                 }
 
-                if (pX == points[2, j] && pY == points[i, 2])
+                if (pX == points[2, j] && pY == points[i, 2] && rightChoice == false)
                 {
-                    contador = contador + 1;
+                    rightChoice = true;
+                    StartCoroutine("CounterIncrease");
                     Debug.Log("d");
                     Debug.Log(contador);
 
                 }
 
-                if (pX == points[2, j] && pY == points[i, 1])
+                if (pX == points[2, j] && pY == points[i, 1] && rightChoice == false)
                 {
-                    contador = contador + 1;
+                    rightChoice = true;
+                    StartCoroutine("CounterIncrease");
                     Debug.Log("e");
                     Debug.Log(contador);
                 }
 
-                if (pX == points[2, j] && pY == points[i, 0])
+                if (pX == points[2, j] && pY == points[i, 0] && rightChoice == false)
                 {
-                    contador = contador + 1;
+                    rightChoice = true;
+                    StartCoroutine("CounterIncrease");
                     Debug.Log("f");
                     Debug.Log(contador);
 
                 }
                 
-                if (pX == points[3, j] && pY == points[i, 0])
+                if (pX == points[3, j] && pY == points[i, 0] && rightChoice == false)
                 {
-                    contador = contador + 1;
+                    rightChoice = true;
+                    StartCoroutine("CounterIncrease");
                     Debug.Log("g");
                     Debug.Log(contador);                    
                 }
@@ -192,5 +159,15 @@ public class PatternRecognition : MonoBehaviour
 
             }
         }
+    }
+
+    IEnumerator CounterIncrease()
+    {
+        if(rightChoice == true)
+            contador = contador + 1;
+
+        yield return new WaitForSeconds(0.01f);
+
+        rightChoice = false;
     }
 }
