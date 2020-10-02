@@ -16,9 +16,15 @@ public class Laberinto : MonoBehaviour
     {
         if(collision.transform.tag == "Wall")
         {
-            Debug.Log("choque");
+            player.transform.position = new Vector3(-8.97f, 1f, 4.62f);
         }
     }
 
-    
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.transform.tag == "Finish")
+        {
+            Debug.Log("meta");
+        }
+    }
 }
