@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Village.unity
     guid: f1bfe6cf8041d634c92a6b004ecb6f43
+  - enabled: 1
+    path: Assets/Scenes/PalenqueEscape.unity
+    guid: 8a96d5db25b88eb40b290bf4d2a6dc76
   m_configObjects: {}

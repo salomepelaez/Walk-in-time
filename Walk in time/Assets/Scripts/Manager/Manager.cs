@@ -35,7 +35,7 @@ public class Manager : MonoBehaviour
 
     public void LoadVillage()
     {
-        SceneManager.LoadScene("Village");
+        SceneManager.LoadScene("PalenqueEscape");
     }
 
     public void OpenOptions()
