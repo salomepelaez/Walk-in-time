@@ -12,6 +12,7 @@ public class PatternRecognition : MonoBehaviour
     public Color playerColor;
 
     private GameObject[,] points; // Buscar cómo escoger los miembros de la matriz en determinada posición
+    public List<GameObject> pointReference;
 
     private int width = 4;
     private int height = 4;
@@ -70,16 +71,16 @@ public class PatternRecognition : MonoBehaviour
                     colorAUsar = playerColor;
 
                     p.GetComponent<Renderer>().material.color = colorAUsar;
-
+                    pointReference.Add(p);
                     //CheckPattern(i, j, colorAUsar);
-                    CheckPattern(i, j, colorAUsar);
+                    //CheckPattern(i, j, colorAUsar);
                     
                 }
             }
         }
     }
 
-    public void CheckPattern(int x, int y, Color colorAVerificar)
+    /*public void CheckPattern(int x, int y, Color colorAVerificar)
     {
         for (int i = 0; i <= points.Length; i++) 
         {
@@ -166,7 +167,7 @@ public class PatternRecognition : MonoBehaviour
                     Debug.Log("no es ahí");
                     Debug.Log(manager.wrongChoices);
                     manager.wrongChoice = true;
-                    StartCoroutine("CounterDecrease");
+                    //StartCoroutine("CounterDecrease");
                 }
 
             }
@@ -183,7 +184,7 @@ public class PatternRecognition : MonoBehaviour
         manager.rightChoice = false;
     }
 
-    IEnumerator CounterDecrease()
+    /*IEnumerator CounterDecrease()
     {
         if(manager.wrongChoice == true)
             manager.wrongChoices = manager.wrongChoices - 1;
@@ -191,5 +192,5 @@ public class PatternRecognition : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
 
         manager.wrongChoice = false;
-    }
+    }*/
 }

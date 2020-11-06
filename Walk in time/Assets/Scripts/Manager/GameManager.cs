@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public List<GameObject> references;
+
     public TextMeshProUGUI attemptsText;
 
     public int contador;

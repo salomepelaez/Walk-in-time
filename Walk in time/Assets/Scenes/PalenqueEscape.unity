@@ -732,7 +732,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345155402}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5866401, y: 1.44, z: 1.2713956}
+  m_LocalPosition: {x: 1.45, y: 1.44, z: 1.2713956}
   m_LocalScale: {x: 0.001, y: 3, z: 5.322555}
   m_Children: []
   m_Father: {fileID: 884085612}
@@ -1233,7 +1233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783192599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7633599, y: 1.44, z: 1.2713956}
+  m_LocalPosition: {x: -1.63, y: 1.44, z: 1.2713956}
   m_LocalScale: {x: 0.001, y: 3, z: 5.322555}
   m_Children: []
   m_Father: {fileID: 884085612}
@@ -1280,7 +1280,6 @@ GameObject:
   - component: {fileID: 849344369}
   - component: {fileID: 849344368}
   - component: {fileID: 849344367}
-  - component: {fileID: 849344366}
   - component: {fileID: 849344370}
   - component: {fileID: 849344371}
   - component: {fileID: 849344373}
@@ -1292,20 +1291,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &849344366
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849344365}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &849344367
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1392,7 +1377,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!136 &849344372
 CapsuleCollider:
@@ -3919,7 +3904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1730857610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3932,6 +3917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20df6fd47540a744bb9042ec17e1f238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  references: []
   attemptsText: {fileID: 0}
   contador: 0
   wrongChoices: 0
@@ -3944,7 +3930,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730857609}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97c4eaa307598e348ba665c3273f1431, type: 3}
   m_Name: 
