@@ -9,6 +9,13 @@ public class ReferenciasLab : MonoBehaviour
     public void Start()
     {
         manager = GameManager.Instance;
+        manager.mState = GameManager.State.Spying;
+    }
+
+    public void Update()
+    {
+        if(manager.mState == GameManager.State.Spying &&  manager.references.Count == 7)
+            manager.mState = GameManager.State.RunningAway;
     }
 
     public void OnTriggerEnter(Collider other)

@@ -12,8 +12,7 @@ public class PatternRecognition : MonoBehaviour
     public Color playerColor;
 
     private GameObject[,] points; // Buscar cómo escoger los miembros de la matriz en determinada posición
-    public List<GameObject> pointReference;
-
+    
     private int width = 4;
     private int height = 4;
     
@@ -33,7 +32,7 @@ public class PatternRecognition : MonoBehaviour
         Vector3 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         PickUpPiece(mPosition);
 
-        manager.attemptsText.text = "Intentos: " + manager.wrongChoices;
+        //manager.attemptsText.text = "Intentos: " + manager.wrongChoices;
     }
 
     void Fill()
@@ -71,7 +70,7 @@ public class PatternRecognition : MonoBehaviour
                     colorAUsar = playerColor;
 
                     p.GetComponent<Renderer>().material.color = colorAUsar;
-                    pointReference.Add(p);
+                    manager.pointReference.Add(p);
                     //CheckPattern(i, j, colorAUsar);
                     //CheckPattern(i, j, colorAUsar);
                     
