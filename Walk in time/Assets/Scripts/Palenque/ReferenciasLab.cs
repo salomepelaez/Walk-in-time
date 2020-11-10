@@ -6,6 +6,8 @@ public class ReferenciasLab : MonoBehaviour
 {
     GameManager manager;
 
+    public int id;
+
     public void Start()
     {
         manager = GameManager.Instance;
