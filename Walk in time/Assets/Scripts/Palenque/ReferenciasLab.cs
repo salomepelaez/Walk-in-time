@@ -23,7 +23,8 @@ public class ReferenciasLab : MonoBehaviour
         if(other.gameObject.GetComponent<Laberinto>() != null)
         {
             Debug.Log("Los puntos funcionan");
-            manager.references.Add(this.gameObject);
+            //manager.references.Add(this.gameObject);
+            manager._pR.AddReference(this.gameObject);
         }
     }
 }

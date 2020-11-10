@@ -8,14 +8,24 @@ public class PatternRecognition : MonoBehaviour
 
     public GameObject point;
 
+    public GameObject first, second;
+
+    public Dictionary<int, int> dic = new Dictionary<int, int>();
+
     public Color baseColor;
     public Color playerColor;
 
     private GameObject[,] points; // Buscar cómo escoger los miembros de la matriz en determinada posición
-    
+    public int[] pieces = new int[7];
+    public List<int> piecesList = new List<int>();
     private int width = 4;
     private int height = 4;
     
+    public void Awake()
+    {
+        References();
+    }
+
     public void Start()
     {
         manager = GameManager.Instance;
@@ -25,6 +35,18 @@ public class PatternRecognition : MonoBehaviour
         manager.wrongChoice = false;
 
         Fill();
+
+        for (int i = 0; i < pieces.Length; i++)
+        {
+            piecesList.Add(pieces[i]);
+            piecesList.Add(pieces[i]);
+        }
+
+        for (int i = 0; i <= 12; i++)
+        {
+            //transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>() = piecesList[i];
+            transform.GetChild(i).GetChild(0).GetComponent<GameManager>().myType = dic[piecesList[i]];
+        }
     }
     
     void Update()
@@ -79,117 +101,41 @@ public class PatternRecognition : MonoBehaviour
         }
     }
 
-    /*public void CheckPattern(int x, int y, Color colorAVerificar)
+    public void References()
     {
-        for (int i = 0; i <= points.Length; i++) 
+        dic.Add(pieces[0], 1);
+        dic.Add(pieces[1], 2);
+        dic.Add(pieces[2], 3);
+        dic.Add(pieces[3], 4);
+        dic.Add(pieces[4], 5);
+        dic.Add(pieces[5], 6);
+        dic.Add(pieces[6], 7);
+    }
+
+    private void CheckIfMatch()
+    {
+        if(first.GetComponent<GameManager>().myType == second.GetComponent<GameManager>().myType)
         {
-            for (int j = 0; j <= points.Length; j++) 
-            {
-                if (i < 0 || i >= width) // Este For, es el encargado de que no exceda el ancho del tablero.
-                    continue; // El Continue permite saltar u omitir las sentencias restantes y continuar con la siguiente.
+            Debug.Log("chi cheñol");
+        }
 
-                if (j < 0 || j >= height) // Este if, es el encargado de que no exceda el alto del tablero.
-                    continue;
-                
-                GameObject p = points[i, j];
-                GameObject pX = points[x, j];
-                GameObject pY = points[i, y]; 
-
-                if (pX == points[0, j] && pY == points[i, 3] && manager.rightChoice == false)
-                {
-                    manager.rightChoice = true;
-                    StartCoroutine("CounterIncrease");
-                    Debug.Log("a");
-                    Debug.Log(manager.contador);
-
-                }
-
-                if (pX == points[1, j] && pY == points[i, 3] && manager.rightChoice == false)
-                {
-                    manager.rightChoice = true;
-                    StartCoroutine("CounterIncrease");
-                    Debug.Log("b");
-                    Debug.Log(manager.contador);
-
-                }
-
-                if (pX == points[2, j] && pY == points[i, 3] && manager.rightChoice == false)
-                {
-                    manager.rightChoice = true;
-                    StartCoroutine("CounterIncrease");
-                    Debug.Log("c");
-                    Debug.Log(manager.contador);
-
-                }
-
-                if (pX == points[2, j] && pY == points[i, 2] && manager.rightChoice == false)
-                {
-                    manager.rightChoice = true;
-                    StartCoroutine("CounterIncrease");
-                    Debug.Log("d");
-                    Debug.Log(manager.contador);
-
-                }
-
-                if (pX == points[2, j] && pY == points[i, 1] && manager.rightChoice == false)
-                {
-                    manager.rightChoice = true;
-                    StartCoroutine("CounterIncrease");
-                    Debug.Log("e");
-                    Debug.Log(manager.contador);
-                }
-
-                if (pX == points[2, j] && pY == points[i, 0] && manager.rightChoice == false)
-                {
-                    manager.rightChoice = true;
-                    StartCoroutine("CounterIncrease");
-                    Debug.Log("f");
-                    Debug.Log(manager.contador);
-
-                }
-                
-                if (pX == points[3, j] && pY == points[i, 0] && manager.rightChoice == false)
-                {
-                    manager.rightChoice = true;
-                    StartCoroutine("CounterIncrease");
-                    Debug.Log("g");
-                    Debug.Log(manager.contador);                    
-                }
-
-                if(manager.contador == 7)
-                {
-                    Debug.Log("ganador");
-                }
-
-                else
-                {
-                    Debug.Log("no es ahí");
-                    Debug.Log(manager.wrongChoices);
-                    manager.wrongChoice = true;
-                    //StartCoroutine("CounterDecrease");
-                }
-
-            }
+        else if (first.GetComponent<GameManager>().myType != second.GetComponent<GameManager>().myType)
+        {            
+            Debug.Log("no cheñol");
         }
     }
 
-    IEnumerator CounterIncrease()
+    public void AddReference(GameObject reference)
     {
-        if(manager.rightChoice == true)
-            manager.contador = manager.contador + 1;
+        if (first == null)
+        {
+            first = reference; 
+        }
 
-        yield return new WaitForSeconds(0.01f);
-
-        manager.rightChoice = false;
+        else if (first != reference)
+        {
+            second = reference;
+            CheckIfMatch();
+        }
     }
-
-    /*IEnumerator CounterDecrease()
-    {
-        if(manager.wrongChoice == true)
-            manager.wrongChoices = manager.wrongChoices - 1;
-
-        yield return new WaitForSeconds(0.01f);
-
-        manager.wrongChoice = false;
-    }*/
 }

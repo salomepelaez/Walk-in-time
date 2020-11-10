@@ -27,11 +27,19 @@ public class GameManager : MonoBehaviour
     public bool rightChoice;
     public bool wrongChoice;
 
+    public PatternRecognition _pR;
+    public int myType;
+
     public void Awake()
     {
         Instance = this;
     }
     
+    public void Start()
+    {
+        _pR = FindObjectOfType<PatternRecognition>();
+    }
+
     public void Update()
     {
         if(mState == State.RunningAway)
@@ -43,7 +51,7 @@ public class GameManager : MonoBehaviour
         //CheckPattern();
     }
 
-    public bool CompareList(List<GameObject> required, List<GameObject> taken)
+    /*public bool CompareList(List<GameObject> required, List<GameObject> taken)
     {
         if (required == null || taken == null || required.Count != taken.Count)
         return false;
