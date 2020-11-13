@@ -7,7 +7,7 @@ public class PatternRecognition : MonoBehaviour
     GameManager manager;
 
     public GameObject point;
-
+    
     public GameObject first, second;
 
     public Dictionary<Mesh, Mesh> dic = new Dictionary<Mesh, Mesh>();
@@ -17,12 +17,12 @@ public class PatternRecognition : MonoBehaviour
 
     private GameObject[,] points; // Buscar cómo escoger los miembros de la matriz en determinada posición
 
-    public Mesh[] pieces = new Mesh[7];
+    public Mesh[] pieces = new Mesh[16];
     public List<Mesh> piecesList = new List<Mesh>();
     private int width = 4;
     private int height = 4;
 
-    public Mesh smallTree, cubeTree, pine, mushrooms, woodStack, hugeTree, canoe;
+    public Mesh smallTree, cubeTree, treeThin, statue, roudTree, yellowFlower, stone, grass, pine, mushrooms, woodStack, hugeTree, canoe;
     
     public void Awake()
     {
@@ -42,14 +42,14 @@ public class PatternRecognition : MonoBehaviour
         for (int i = 0; i < pieces.Length; i++)
         {
             piecesList.Add(pieces[i]);
-            piecesList.Add(pieces[i]);
+            //piecesList.Add(pieces[i]);
         }
 
-        for (int i = 0; i <= 12; i++)
+        /*for (int i = 0; i <= 12; i++)
         {
             //transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>() = piecesList[i];
             transform.GetChild(i).GetChild(0).GetComponent<GameManager>().myType = dic[piecesList[i]];
-        }
+        }*/
     }
     
     void Update()
@@ -67,9 +67,9 @@ public class PatternRecognition : MonoBehaviour
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
-            {
-                GameObject p = GameObject.Instantiate(point) as GameObject;
-
+            {                
+                GameObject p = new GameObject();
+               
                 Vector3 position = new Vector3(x, y, 0);
                 p.transform.position = position;
 
@@ -109,10 +109,19 @@ public class PatternRecognition : MonoBehaviour
         dic.Add(pieces[0], smallTree);
         dic.Add(pieces[1], cubeTree);
         dic.Add(pieces[2], pine);
-        dic.Add(pieces[3], mushrooms);
+        dic.Add(pieces[3], cubeTree);
         dic.Add(pieces[4], woodStack);
         dic.Add(pieces[5], hugeTree);
         dic.Add(pieces[6], canoe);
+        dic.Add(pieces[7], canoe);
+        dic.Add(pieces[8], canoe);
+        dic.Add(pieces[9], canoe);
+        dic.Add(pieces[10], canoe);
+        dic.Add(pieces[11], canoe);
+        dic.Add(pieces[12], canoe);
+        dic.Add(pieces[13], canoe);
+        dic.Add(pieces[14], canoe);
+        dic.Add(pieces[15], canoe);
     }
 
     private void CheckIfMatch()
