@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public bool wrongChoice;
 
     public PatternRecognition _pR;
-    public int myType;
+    public Mesh myType;
 
     public void Awake()
     {

@@ -10,16 +10,19 @@ public class PatternRecognition : MonoBehaviour
 
     public GameObject first, second;
 
-    public Dictionary<int, int> dic = new Dictionary<int, int>();
+    public Dictionary<Mesh, Mesh> dic = new Dictionary<Mesh, Mesh>();
 
     public Color baseColor;
     public Color playerColor;
 
     private GameObject[,] points; // Buscar cómo escoger los miembros de la matriz en determinada posición
-    public int[] pieces = new int[7];
-    public List<int> piecesList = new List<int>();
+
+    public Mesh[] pieces = new Mesh[7];
+    public List<Mesh> piecesList = new List<Mesh>();
     private int width = 4;
     private int height = 4;
+
+    public Mesh smallTree, cubeTree, pine, mushrooms, woodStack, hugeTree, canoe;
     
     public void Awake()
     {
@@ -103,13 +106,13 @@ public class PatternRecognition : MonoBehaviour
 
     public void References()
     {
-        dic.Add(pieces[0], 1);
-        dic.Add(pieces[1], 2);
-        dic.Add(pieces[2], 3);
-        dic.Add(pieces[3], 4);
-        dic.Add(pieces[4], 5);
-        dic.Add(pieces[5], 6);
-        dic.Add(pieces[6], 7);
+        dic.Add(pieces[0], smallTree);
+        dic.Add(pieces[1], cubeTree);
+        dic.Add(pieces[2], pine);
+        dic.Add(pieces[3], mushrooms);
+        dic.Add(pieces[4], woodStack);
+        dic.Add(pieces[5], hugeTree);
+        dic.Add(pieces[6], canoe);
     }
 
     private void CheckIfMatch()

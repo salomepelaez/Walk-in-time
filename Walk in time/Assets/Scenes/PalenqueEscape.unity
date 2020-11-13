@@ -3941,7 +3941,7 @@ MonoBehaviour:
   rightChoice: 0
   wrongChoice: 0
   _pR: {fileID: 0}
-  myType: 0
+  myType: {fileID: 0}
 --- !u!114 &1730857611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3959,8 +3959,29 @@ MonoBehaviour:
   second: {fileID: 0}
   baseColor: {r: 1, g: 1, b: 1, a: 1}
   playerColor: {r: 0, g: 0.10796356, b: 1, a: 1}
-  pieces: 00000000000000000000000000000000000000000000000000000000
-  piecesList: 00000000000000000000000000000000000000000000000000000000
+  pieces:
+  - {fileID: 4300000, guid: 6543be00b3eb51041b709c13915c9a22, type: 3}
+  - {fileID: 4300000, guid: bc282e6bc5a904948adfa35e8a21b492, type: 3}
+  - {fileID: 4300000, guid: 9afff332b07f0b44499811756673cac3, type: 3}
+  - {fileID: 4300000, guid: 279b2e473c9b8654580a28dc7367a8ea, type: 3}
+  - {fileID: 4300000, guid: 2dfb1f70a1c8d4546887bc8353106186, type: 3}
+  - {fileID: 4300000, guid: 08689452f745a68469f2076066fecf1b, type: 3}
+  - {fileID: 4300000, guid: e62090e58abe68d4886b8d47fe7d88c4, type: 3}
+  piecesList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  smallTree: {fileID: 0}
+  cubeTree: {fileID: 0}
+  pine: {fileID: 0}
+  mushrooms: {fileID: 0}
+  woodStack: {fileID: 0}
+  hugeTree: {fileID: 0}
+  canoe: {fileID: 0}
 --- !u!4 &1730857612
 Transform:
   m_ObjectHideFlags: 0
