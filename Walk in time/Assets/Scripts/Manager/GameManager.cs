@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     public State mState = State.None;
 
+    public GameObject[] labLArray = new GameObject[0];
+    public GameObject[] patArray = new GameObject[0];
+
     public List<GameObject> references;
     public List<GameObject> pointReference;
 
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     public int contador;
     public int wrongChoices;
+    public int refIndex;
 
     public bool rightChoice;
     public bool wrongChoice;

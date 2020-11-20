@@ -3933,11 +3933,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mState: 0
+  labLArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  patArray: []
   references: []
   pointReference: []
   attemptsText: {fileID: 0}
   contador: 0
   wrongChoices: 0
+  refIndex: 0
   rightChoice: 0
   wrongChoice: 0
   _pR: {fileID: 0}
@@ -3963,8 +3973,17 @@ MonoBehaviour:
   - {fileID: 4300000, guid: 6543be00b3eb51041b709c13915c9a22, type: 3}
   - {fileID: 4300000, guid: bc282e6bc5a904948adfa35e8a21b492, type: 3}
   - {fileID: 4300000, guid: 9afff332b07f0b44499811756673cac3, type: 3}
+  - {fileID: 4300000, guid: 5563206b6b86c9c48b6b5448c8693152, type: 3}
+  - {fileID: 4300000, guid: 1b03489c87a407344be5d54b6d72a700, type: 3}
+  - {fileID: 4300000, guid: a9cd2dc5c33379f42ba4505c9a143f33, type: 3}
   - {fileID: 4300000, guid: 279b2e473c9b8654580a28dc7367a8ea, type: 3}
+  - {fileID: 4300000, guid: d8495cca47d62e44d9337eb1bc76c26e, type: 3}
+  - {fileID: 4300000, guid: 5654a4f2853f22f49829807d167f0e44, type: 3}
+  - {fileID: 4300000, guid: c64136ef503362f4ab765a3d586f514f, type: 3}
   - {fileID: 4300000, guid: 2dfb1f70a1c8d4546887bc8353106186, type: 3}
+  - {fileID: 4300000, guid: 29080cd9cb714a84983cf73f9765dc76, type: 3}
+  - {fileID: 4300000, guid: 58072ba905b59be4bba7d167cbc97db1, type: 3}
+  - {fileID: 4300000, guid: 72615c2f679822743a29fe6565038159, type: 3}
   - {fileID: 4300000, guid: 08689452f745a68469f2076066fecf1b, type: 3}
   - {fileID: 4300000, guid: e62090e58abe68d4886b8d47fe7d88c4, type: 3}
   piecesList:
@@ -3975,13 +3994,31 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  smallTree: {fileID: 0}
-  cubeTree: {fileID: 0}
-  pine: {fileID: 0}
-  mushrooms: {fileID: 0}
-  woodStack: {fileID: 0}
-  hugeTree: {fileID: 0}
-  canoe: {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  smallTree: {fileID: 4300000, guid: 6543be00b3eb51041b709c13915c9a22, type: 3}
+  cubeTree: {fileID: 4300000, guid: bc282e6bc5a904948adfa35e8a21b492, type: 3}
+  pine: {fileID: 4300000, guid: 9afff332b07f0b44499811756673cac3, type: 3}
+  cubeTreeDark: {fileID: 4300000, guid: 5563206b6b86c9c48b6b5448c8693152, type: 3}
+  treeThin: {fileID: 4300000, guid: 1b03489c87a407344be5d54b6d72a700, type: 3}
+  statue: {fileID: 4300000, guid: a9cd2dc5c33379f42ba4505c9a143f33, type: 3}
+  mushrooms: {fileID: 4300000, guid: 279b2e473c9b8654580a28dc7367a8ea, type: 3}
+  roundTree: {fileID: 4300000, guid: d8495cca47d62e44d9337eb1bc76c26e, type: 3}
+  yellowFlower: {fileID: 4300000, guid: 5654a4f2853f22f49829807d167f0e44, type: 3}
+  stone: {fileID: 4300000, guid: c64136ef503362f4ab765a3d586f514f, type: 3}
+  woodStack: {fileID: 4300000, guid: 2dfb1f70a1c8d4546887bc8353106186, type: 3}
+  roundTreeDark: {fileID: 4300000, guid: 29080cd9cb714a84983cf73f9765dc76, type: 3}
+  grass: {fileID: 4300000, guid: 58072ba905b59be4bba7d167cbc97db1, type: 3}
+  largeGrass: {fileID: 4300000, guid: 72615c2f679822743a29fe6565038159, type: 3}
+  hugeTree: {fileID: 4300000, guid: 08689452f745a68469f2076066fecf1b, type: 3}
+  canoe: {fileID: 4300000, guid: e62090e58abe68d4886b8d47fe7d88c4, type: 3}
 --- !u!4 &1730857612
 Transform:
   m_ObjectHideFlags: 0
@@ -4603,6 +4640,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2.3862
       objectReference: {fileID: 0}
+    - target: {fileID: 3300000, guid: 29080cd9cb714a84983cf73f9765dc76, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 29080cd9cb714a84983cf73f9765dc76, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29080cd9cb714a84983cf73f9765dc76, type: 3}
 --- !u!4 &2115045243 stripped

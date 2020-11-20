@@ -22,12 +22,33 @@ public class PatternRecognition : MonoBehaviour
     private int width = 4;
     private int height = 4;
 
-    public Mesh smallTree, cubeTree, treeThin, statue, roudTree, yellowFlower, stone, grass, pine, mushrooms, woodStack, hugeTree, canoe;
+    public Mesh smallTree, cubeTree, pine, cubeTreeDark, treeThin, statue, mushrooms, roundTree, yellowFlower, stone, woodStack, roundTreeDark, grass, largeGrass, hugeTree, canoe;
     
     public void Awake()
     {
         References();
     }
+
+    public void References()
+    {
+        dic.Add(pieces[0], smallTree);
+        dic.Add(pieces[1], cubeTree);
+        dic.Add(pieces[2], pine);
+        dic.Add(pieces[3], cubeTreeDark);
+        dic.Add(pieces[4], treeThin);
+        dic.Add(pieces[5], statue);
+        dic.Add(pieces[6], mushrooms);
+        dic.Add(pieces[7], roundTree);
+        dic.Add(pieces[8], yellowFlower);
+        dic.Add(pieces[9], stone);
+        dic.Add(pieces[10], woodStack);
+        dic.Add(pieces[11], roundTreeDark);
+        dic.Add(pieces[12], grass);
+        dic.Add(pieces[13], largeGrass);
+        dic.Add(pieces[14], hugeTree);
+        dic.Add(pieces[15], canoe);
+    }
+
 
     public void Start()
     {
@@ -45,9 +66,9 @@ public class PatternRecognition : MonoBehaviour
             //piecesList.Add(pieces[i]);
         }
 
-        /*for (int i = 0; i <= 12; i++)
+        /*
         {
-            //transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>() = piecesList[i];
+            transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>() = piecesList[i];
             transform.GetChild(i).GetChild(0).GetComponent<GameManager>().myType = dic[piecesList[i]];
         }*/
     }
@@ -69,6 +90,15 @@ public class PatternRecognition : MonoBehaviour
             for (int y = 0; y < height; y++)
             {                
                 GameObject p = new GameObject();
+                MeshFilter meshFilter = p.AddComponent<MeshFilter>();
+                                
+                for (int i = 0; i < pieces.Length; i++)
+                {
+                    p.GetComponent<MeshFilter>().mesh = piecesList[i];
+                    //p.GetComponent<GameManager>().myType = dic[piecesList[i]];
+                    //p.AddComponent<MeshRenderer>();                    
+                    //Mesh mesh = meshFilter.mesh;
+                }
                
                 Vector3 position = new Vector3(x, y, 0);
                 p.transform.position = position;
@@ -104,27 +134,8 @@ public class PatternRecognition : MonoBehaviour
         }
     }
 
-    public void References()
-    {
-        dic.Add(pieces[0], smallTree);
-        dic.Add(pieces[1], cubeTree);
-        dic.Add(pieces[2], pine);
-        dic.Add(pieces[3], cubeTree);
-        dic.Add(pieces[4], woodStack);
-        dic.Add(pieces[5], hugeTree);
-        dic.Add(pieces[6], canoe);
-        dic.Add(pieces[7], canoe);
-        dic.Add(pieces[8], canoe);
-        dic.Add(pieces[9], canoe);
-        dic.Add(pieces[10], canoe);
-        dic.Add(pieces[11], canoe);
-        dic.Add(pieces[12], canoe);
-        dic.Add(pieces[13], canoe);
-        dic.Add(pieces[14], canoe);
-        dic.Add(pieces[15], canoe);
-    }
-
-    private void CheckIfMatch()
+    
+    /*private void CheckIfMatch()
     {
         if(first.GetComponent<GameManager>().myType == second.GetComponent<GameManager>().myType)
         {
@@ -149,5 +160,5 @@ public class PatternRecognition : MonoBehaviour
             second = reference;
             CheckIfMatch();
         }
-    }
+    }*/
 }

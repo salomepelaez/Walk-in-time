@@ -8,6 +8,8 @@ public class ReferenciasLab : MonoBehaviour
 
     public int id;
 
+    //private int index;
+
     public void Start()
     {
         manager = GameManager.Instance;
@@ -21,12 +23,15 @@ public class ReferenciasLab : MonoBehaviour
     }
 
     public void OnTriggerEnter(Collider other)
-    {
+    {        
         if(other.gameObject.GetComponent<Laberinto>() != null)
         {
             Debug.Log("Los puntos funcionan");
+            manager.labLArray[manager.refIndex] = this.gameObject;
             //manager.references.Add(this.gameObject);
-            manager._pR.AddReference(this.gameObject);
+           // manager._pR.AddReference(this.gameObject);
+            manager.refIndex++;
+            Debug.Log(manager.refIndex);
         }
     }
 }
