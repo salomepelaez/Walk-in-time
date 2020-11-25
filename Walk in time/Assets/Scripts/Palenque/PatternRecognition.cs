@@ -7,6 +7,7 @@ public class PatternRecognition : MonoBehaviour
     GameManager manager;
 
     public GameObject point;
+    public GameObject managerObject;
     
     public GameObject first, second;
 
@@ -64,6 +65,8 @@ public class PatternRecognition : MonoBehaviour
         {
             piecesList.Add(pieces[i]);
             //piecesList.Add(pieces[i]);
+            managerObject.transform.GetChild(0).GetComponent<MeshFilter>().mesh = piecesList[i];
+            //transform.GetChild(0).GetComponent<GameManager>().myType = dic[piecesList[i]];
         }
 
         /*
@@ -94,7 +97,7 @@ public class PatternRecognition : MonoBehaviour
                                 
                 for (int i = 0; i < pieces.Length; i++)
                 {
-                    p.GetComponent<MeshFilter>().mesh = piecesList[i];
+                    //p.GetComponent<MeshFilter>().mesh = piecesList[i];
                     //p.GetComponent<GameManager>().myType = dic[piecesList[i]];
                     //p.AddComponent<MeshRenderer>();                    
                     //Mesh mesh = meshFilter.mesh;
