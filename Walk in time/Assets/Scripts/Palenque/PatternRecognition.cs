@@ -65,15 +65,14 @@ public class PatternRecognition : MonoBehaviour
         {
             piecesList.Add(pieces[i]);
             //piecesList.Add(pieces[i]);
-            managerObject.transform.GetChild(0).GetComponent<MeshFilter>().mesh = piecesList[i];
-            //transform.GetChild(0).GetComponent<GameManager>().myType = dic[piecesList[i]];
+            
         }
 
-        /*
+        for (int i = 0; i <= 15; i++)
         {
-            transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>() = piecesList[i];
-            transform.GetChild(i).GetChild(0).GetComponent<GameManager>().myType = dic[piecesList[i]];
-        }*/
+            managerObject.transform.GetChild(i).GetComponent<MeshFilter>().mesh = piecesList[i];
+            manager.myType = dic[piecesList[i]];
+        }
     }
     
     void Update()
