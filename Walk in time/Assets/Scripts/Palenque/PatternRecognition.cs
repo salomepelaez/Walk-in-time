@@ -63,9 +63,7 @@ public class PatternRecognition : MonoBehaviour
 
         for (int i = 0; i < pieces.Length; i++)
         {
-            piecesList.Add(pieces[i]);
-            //piecesList.Add(pieces[i]);
-            
+            piecesList.Add(pieces[i]);            
         }
 
         for (int i = 0; i <= 15; i++)
@@ -93,15 +91,9 @@ public class PatternRecognition : MonoBehaviour
             {                
                 GameObject p = new GameObject();
                 MeshFilter meshFilter = p.AddComponent<MeshFilter>();
-                                
-                for (int i = 0; i < pieces.Length; i++)
-                {
-                    //p.GetComponent<MeshFilter>().mesh = piecesList[i];
-                    //p.GetComponent<GameManager>().myType = dic[piecesList[i]];
-                    //p.AddComponent<MeshRenderer>();                    
-                    //Mesh mesh = meshFilter.mesh;
-                }
-               
+                MeshRenderer meshRenderer = p.AddComponent<MeshRenderer>();
+                p.GetComponent<MeshRenderer>().material.color = Color.black;
+                                               
                 Vector3 position = new Vector3(x, y, 0);
                 p.transform.position = position;
 
